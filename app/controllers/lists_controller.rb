@@ -11,7 +11,7 @@ class ListsController < ApplicationController
   end
 
   def create
-    list = List.create! params[:list].permit(:title, :notes)
+    list = List.create! params[:list].permit(:creator, :title, :notes)
     redirect_to list_path(list.slug)
   end
 end

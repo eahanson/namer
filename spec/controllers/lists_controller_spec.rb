@@ -3,9 +3,10 @@ require 'spec_helper'
 describe ListsController do
   describe "#create" do
     it 'creates a list and redirects to it' do
-      post :create, list: { title: 'new title', notes: 'new notes' }
+      post :create, list: { creator: 'new creator', title: 'new title', notes: 'new notes' }
 
       list = List.last
+      expect(list.creator).to eq 'new creator'
       expect(list.title).to eq 'new title'
       expect(list.notes).to eq 'new notes'
       expect(list.slug).to match /[a-z0-9]+/
@@ -16,13 +17,13 @@ describe ListsController do
 
   describe "#show" do
     it 'shows a list given a slug' do
-      list = List.create!
+      list = mom.list!
       get :show, id: list.slug
       expect(assigns(:list)).to eq list
     end
 
     it 'does show accept a list id' do
-      list = List.create!
+      list = mom.list!
       get :show, id: list.id
       expect(assigns(:list)).to eq nil
     end

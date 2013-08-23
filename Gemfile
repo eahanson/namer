@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'annotate', group: :development
 gem 'awesome_print', group: [:development, :test]
 gem 'coffee-rails', '~> 4.0.0'
 gem 'database_cleaner'

@@ -1,5 +1,9 @@
 = form_for @list do |f|
-  .form-group
+  .form-group.required
+    = f.label :creator, 'What is your name?', class: 'control-label'
+    = f.text_field :creator, placeholder: 'Homer, Homer J. Simpson, ...', class: 'form-control'
+
+  .form-group.required
     = f.label :title, 'What do you need help naming?', class: 'control-label'
     = f.text_field :title, placeholder: 'My cat, my baby, ...', class: 'form-control'
 
@@ -7,7 +11,17 @@
     = f.label :notes, 'Additional information', class: 'control-label'
     = f.text_area :notes, placeholder: 'This is a really big brown cat, ...', class: 'form-control'
 
-  %button.btn.btn-primary{type: 'submit'}
+  %a.btn.btn-primary#submit
     Continue
     = fa_icon 'chevron-right'
 
+:coffeescript
+  $ ->
+    $('#submit').on 'click', ->
+      $('form .required').each (index, form_group) ->
+        if $(form_group).find('input').val().trim() == ''
+          $(form_group).addClass('has-error')
+        else
+          $(form_group).removeClass('has-error')
+
+      $('form').submit() unless $('form .has-error').length > 0

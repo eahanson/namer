@@ -13,5 +13,9 @@
     = csrf_meta_tags
 
   %body
+    - unless @hide_navbar
+      %nav.navbar.navbar-default{role: 'navigation'}
+        .navbar-header
+          = link_to 'Namer', root_path, class: 'navbar-brand'
     .container{style: 'margin-top: 50px; padding-right: 50px; padding-left: 50px'}
       = yield
