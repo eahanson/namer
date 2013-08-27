@@ -1,0 +1,8 @@
+.suggestion
+  .suggestion-header
+    %span.creator= suggestion.creator
+    said #{time_ago_in_words suggestion.created_at} ago:
+  .suggestion-contents= suggestion.contents
+  - if suggestion.notes?
+    .suggestion-notes= suggestion.notes
+

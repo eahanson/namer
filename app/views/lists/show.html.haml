@@ -2,7 +2,7 @@
   .panel-heading
     %h3.panel-title
       Help
-      %span.text-success= @list.creator
+      %span.creator= @list.creator
       find a name for…
   .panel-body
     %p= @list.title
@@ -11,6 +11,9 @@
 = link_to new_list_suggestion_path(@list.to_param), class: 'btn btn-primary', id: 'add' do
   %i.icon-plus-sign-alt
   Add Suggestion
+
+.suggestions
+  = render @list.suggestions.order('created_at asc')
 
 %p.text-muted{style: 'margin-top: 20px'}
   = fa_icon 'share-sign'
