@@ -1,0 +1,16 @@
+= form_for [:list, @item] do |f|
+  .form-group.required
+    = f.label :creator, 'What is your name?', class: 'control-label'
+    = f.text_field :creator, placeholder: 'Homer, Homer J. Simpson, ...', class: 'form-control'
+
+  .form-group.required
+    = f.label :contents, 'Your suggestion:', class: 'control-label'
+    = f.text_field :contents, class: 'form-control'
+
+  .form-group
+    = f.label :notes, 'Additional information:', class: 'control-label'
+    = f.text_area :notes, class: 'form-control'
+
+  %button.btn.btn-primary#submit{type: 'submit'}
+    Make Suggestion
+    = fa_icon 'check-sign'

@@ -13,7 +13,10 @@
 
 class List < ActiveRecord::Base
   before_create :generate_slug
+
   validates :creator, :title, presence: true
+
+  has_many :items
 
   def to_param
     slug

@@ -8,7 +8,11 @@
     %p= @list.title
     %p.text-muted= @list.notes
 
-%p.text-muted
+= link_to new_list_item_path(@list.to_param), class: 'btn btn-primary', id: 'add' do
+  %i.icon-plus-sign-alt
+  Add Suggestion
+
+%p.text-muted{style: 'margin-top: 20px'}
   = fa_icon 'share-sign'
   Share this URL with your friends to get some help:
   %div
