@@ -1,4 +1,4 @@
-= form_for [:list, @item] do |f|
+= form_for [:list, @suggestion] do |f|
   .form-group.required
     = f.label :creator, 'What is your name?', class: 'control-label'
     = f.text_field :creator, placeholder: 'Homer, Homer J. Simpson, ...', class: 'form-control'

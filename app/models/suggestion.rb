@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: items
+# Table name: suggestions
 #
 #  id         :integer          not null, primary key
 #  list_id    :integer          not null
@@ -11,7 +11,7 @@
 #  updated_at :datetime
 #
 
-class Item < ActiveRecord::Base
+class Suggestion < ActiveRecord::Base
   validates :list_id, :contents, :creator, presence: true
 
   belongs_to :list

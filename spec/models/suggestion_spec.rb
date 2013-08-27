@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: items
+# Table name: suggestions
 #
 #  id         :integer          not null, primary key
 #  list_id    :integer          not null
@@ -13,11 +13,11 @@
 
 require 'spec_helper'
 
-describe Item do
+describe Suggestion do
   describe 'validations' do
     before do
       list = mom.list!
-      @valid = Item.new(list_id: list.id, contents: 'contents', creator: 'creator')
+      @valid = Suggestion.new(list_id: list.id, contents: 'contents', creator: 'creator')
       expect(@valid).to be_valid
     end
 
@@ -39,9 +39,9 @@ describe Item do
 
   it 'belongs to a list' do
     list = mom.list!
-    item = list.items.create! contents: 'contents', creator: 'creator'
-    expect(item.list).to eq list
-    expect(item.contents).to eq 'contents'
-    expect(item.creator).to eq 'creator'
+    suggestion = list.suggestions.create! contents: 'contents', creator: 'creator'
+    expect(suggestion.list).to eq list
+    expect(suggestion.contents).to eq 'contents'
+    expect(suggestion.creator).to eq 'creator'
   end
 end

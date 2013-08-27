@@ -16,7 +16,7 @@ class List < ActiveRecord::Base
 
   validates :creator, :title, presence: true
 
-  has_many :items
+  has_many :suggestions
 
   def to_param
     slug
