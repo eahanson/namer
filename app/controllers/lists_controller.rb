@@ -7,10 +7,12 @@ class ListsController < ApplicationController
   end
 
   def new
-    @list = List.new
+    @list = List.new creator: session[:creator]
   end
 
   def create
+    session[:creator] = params[:list].try(:[], :creator)
+
     list = List.create! params[:list].permit(:creator, :title, :notes)
     redirect_to list_path(list.slug)
   end

@@ -13,6 +13,20 @@ describe ListsController do
 
       response.should redirect_to list_path(list.slug)
     end
+
+    it 'adds the creator to the session' do
+      expect {
+        post :create, list: { creator: 'new creator', title: 'new title', notes: 'new notes' }
+      }.to change { session[:creator] }.from(nil).to('new creator')
+    end
+  end
+
+  describe '#new' do
+    it 'creates a new list with the creator from the session' do
+      session[:creator] = 'the creator'
+      get :new
+      expect(assigns(:list).creator).to eq 'the creator'
+    end
   end
 
   describe "#show" do

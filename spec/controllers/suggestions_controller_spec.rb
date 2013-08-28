@@ -14,5 +14,21 @@ describe SuggestionsController do
 
       expect(response).to redirect_to list_path(list)
     end
+
+    it 'adds the creator to the session' do
+      expect {
+        list = mom.list!
+        post :create, list_id: list.to_param, suggestion: { creator: 'creator', contents: 'contents', notes: 'notes' }
+      }.to change { session[:creator] }.from(nil).to('creator')
+    end
+  end
+
+  describe '#new' do
+    it 'creates a new suggestion with the creator from the session' do
+      list = mom.list!
+      session[:creator] = 'the creator'
+      get :new, list_id: list.to_param
+      expect(assigns(:suggestion).creator).to eq 'the creator'
+    end
   end
 end
