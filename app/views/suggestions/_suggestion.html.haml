@@ -1,8 +1,9 @@
-.suggestion
-  .suggestion-header
+.panel.suggestion
+  .panel-heading.suggestion-header
     %span.creator= suggestion.creator
-    said #{time_ago_in_words suggestion.created_at} ago:
-  .suggestion-contents= suggestion.contents
-  - if suggestion.notes?
-    .suggestion-notes= suggestion.notes
+    suggested #{time_ago_in_words suggestion.created_at} ago
+  .panel-body
+    .suggestion-contents= suggestion.contents
+    - if suggestion.notes?
+      .suggestion-notes= suggestion.notes
 
