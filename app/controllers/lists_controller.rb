@@ -4,6 +4,9 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find_by_slug(params[:id])
+    session[:recently_viewed_lists] ||= []
+    session[:recently_viewed_lists].delete @list.to_param
+    session[:recently_viewed_lists].unshift @list.to_param
   end
 
   def new

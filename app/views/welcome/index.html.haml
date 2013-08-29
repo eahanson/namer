@@ -12,6 +12,14 @@
   %p
     They should have sent you a link—click it or paste it in your browser's address bar.
 
+- if @recently_viewed_lists.present?
+  .recently_viewed_lists
+    %h4 You recently viewed:
+    - @recently_viewed_lists.find_each do |list|
+      = link_to list_path(list), class: 'recently_viewed_list' do
+        Help #{list.creator} find a name for
+        %span.list_title= list.title
+
 :coffeescript
   $('#get-started').on 'click', ->
     document.location = "#{new_list_path}"
