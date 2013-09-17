@@ -1,7 +1,17 @@
 .panel.suggestion
   .panel-heading.suggestion-header
-    %span.creator= suggestion.creator
-    suggested #{time_ago_in_words suggestion.created_at} ago
+    %span.pull-right
+      %span.badge
+        = fa_icon 'thumbs-up'
+        = suggestion.vote_count
+
+      = link_to list_suggestion_votes_path(@list, suggestion), remote: true, method: :post, class: 'btn btn-primary btn-small' do
+        = fa_icon 'thumbs-up'
+        Vote
+    %div{style: 'margin-top: 7px'}
+      %span.creator= suggestion.creator
+      suggested #{time_ago_in_words suggestion.created_at} ago
+    .clearfix
   .panel-body
     .suggestion-contents= suggestion.contents
     - if suggestion.notes?

@@ -10,6 +10,7 @@ gem 'haml'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'pg'
+gem 'quiet_assets', group: [:development, :test]
 gem 'rails', '4.0.0'
 gem 'rspec-rails', group: [:development, :test]
 gem 'sass-rails', '~> 4.0.0'

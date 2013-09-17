@@ -44,4 +44,10 @@ describe Suggestion do
     expect(suggestion.contents).to eq 'contents'
     expect(suggestion.creator).to eq 'creator'
   end
+
+  it 'has votes' do
+    suggestion = mom.suggestion!
+    vote = suggestion.votes.create!
+    expect(suggestion.votes).to match_array [vote]
+  end
 end

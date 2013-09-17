@@ -15,4 +15,9 @@ class Suggestion < ActiveRecord::Base
   validates :list_id, :contents, :creator, presence: true
 
   belongs_to :list
+  has_many :votes
+
+  def vote_count
+    votes.count
+  end
 end
