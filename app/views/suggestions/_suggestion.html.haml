@@ -1,13 +1,9 @@
 .panel.suggestion{id: "suggestion_#{suggestion.to_param}"}
   .panel-heading.suggestion-header
     %span.pull-right
-      %span.badge
-        = fa_icon 'thumbs-up'
+      = link_to list_suggestion_votes_path(@list, suggestion), remote: true, method: :post, class: 'btn btn-link btn-large vote-button' do
+        = fa_icon 'star'
         %span.vote-count= suggestion.vote_count
-
-      = link_to list_suggestion_votes_path(@list, suggestion), remote: true, method: :post, class: 'btn btn-primary btn-small vote-button' do
-        = fa_icon 'thumbs-up'
-        Vote
     %div{style: 'margin-top: 7px'}
       %span.creator= suggestion.creator
       suggested #{time_ago_in_words suggestion.created_at} ago
@@ -21,8 +17,7 @@
   $('.vote-button').on 'ajax:success', (event, data, status, xhr) ->
     suggestion = $("#suggestion_\#{data.suggestion}")
     suggestion.find(".vote-count").text(data.votes)
-    suggestion.find(".vote-button").removeClass('btn-primary').addClass('btn-success')
-    suggestion.find(".vote-button i").removeClass('icon-thumbs-up').addClass('icon-ok')
+    suggestion.find(".vote-button").addClass('voted')
 
   $('.vote-button').on 'ajax:before', ->
     $(this).attr('disabled', true)
