@@ -60,3 +60,4 @@ production:
   pool: 5
   username: namer
   password:
+  host: localhost
