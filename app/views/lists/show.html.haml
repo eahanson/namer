@@ -6,16 +6,31 @@
   %h4= @list.title
   %p.text-muted= @list.notes
 
+  %hr
+
+  .suggestions
+    = render @list.suggestions.order('created_at asc')
+
+  - if @list.suggestions.present?
+    %hr
+
   .list-controls
     = link_to new_list_suggestion_path(@list.to_param), class: 'btn btn-primary', id: 'add' do
       %i.icon-plus-sign-alt
       Add Suggestion
-
-  .suggestions
-    = render @list.suggestions.order('created_at asc')
 
   %p.text-muted{style: 'margin-top: 20px'}
     = fa_icon 'share-sign'
     Share this URL with your friends to get some help:
     %div
       %input{type: 'text', value: list_url(@list), style: 'width: 100%; color: #999; border: 1px solid #ccc'}
+
+:coffeescript
+  $('.vote-button').on 'ajax:success', (event, data, status, xhr) ->
+    suggestion = $("#suggestion_\#{data.suggestion}")
+    suggestion.find(".vote-count").text(data.votes)
+    suggestion.find(".vote-button").addClass('voted')
+    suggestion.find(".vote-button i").removeClass('icon-star-empty').addClass('icon-star')
+
+  $('.vote-button').on 'ajax:before', ->
+    $(this).attr('disabled', true)

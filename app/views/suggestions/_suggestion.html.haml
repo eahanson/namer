@@ -1,24 +1,13 @@
-.panel.suggestion{id: "suggestion_#{suggestion.to_param}"}
-  .panel-heading.suggestion-header
-    %span.pull-right
-      = link_to list_suggestion_votes_path(@list, suggestion), remote: true, method: :post, class: 'btn btn-link btn-large vote-button' do
-        = fa_icon 'star'
-        %span.vote-count= suggestion.vote_count
-    %div{style: 'margin-top: 7px'}
+.suggestion{id: "suggestion_#{suggestion.to_param}"}
+  = link_to list_suggestion_votes_path(@list, suggestion), remote: true, method: :post, class: 'btn btn-link btn-large vote-button' do
+    = fa_icon 'star-empty'
+  .suggestion-contents
+    = suggestion.contents
+    .suggestion-notes
+      = fa_icon 'star'
+      %span.vote-count= suggestion.vote_count
+      •
+      Suggested by
       %span.creator= suggestion.creator
-      suggested #{time_ago_in_words suggestion.created_at} ago
-    .clearfix
-  .panel-body
-    .suggestion-contents= suggestion.contents
-    - if suggestion.notes?
-      .suggestion-notes= suggestion.notes
-
-:coffeescript
-  $('.vote-button').on 'ajax:success', (event, data, status, xhr) ->
-    suggestion = $("#suggestion_\#{data.suggestion}")
-    suggestion.find(".vote-count").text(data.votes)
-    suggestion.find(".vote-button").addClass('voted')
-
-  $('.vote-button').on 'ajax:before', ->
-    $(this).attr('disabled', true)
-
+      #{time_ago_in_words suggestion.created_at} ago
+  .clearfix
