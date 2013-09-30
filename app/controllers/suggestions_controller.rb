@@ -7,7 +7,7 @@ class SuggestionsController < ApplicationController
     session[:creator] = params[:suggestion].try(:[], :creator)
 
     list = List.find_by_slug(params[:list_id])
-    list.suggestions.create! params[:suggestion].permit(:creator, :contents, :notes)
+    list.suggestions.create! params[:suggestion].permit(:creator, :contents)
     redirect_to list_path(list)
   end
 end

@@ -8,7 +8,7 @@ class Mom
   end
 
   def suggestion(list=mom.list)
-    Suggestion.new list: list, contents: 'Some great suggestion', notes: "Isn't it great?", creator: 'Bob'
+    Suggestion.new list: list, contents: 'Some great suggestion', creator: 'Bob'
   end
 
   def suggestion!(list=mom.list!)
