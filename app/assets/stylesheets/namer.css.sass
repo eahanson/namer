@@ -1,3 +1,20 @@
+.actions
+  list-style-type: none
+  margin: 0
+  padding: 0
+  li
+    display: inline
+    color: #999
+    font-size: 12px
+    font-weight: normal
+  li + li:before
+    padding-left: 5px
+    padding-right: 5px
+    content: '•'
+
+.comment
+  margin: 10px 60px
+
 .creator
   color: #468847
 
@@ -7,6 +24,13 @@
 
   .list-controls
     margin: 25px 0
+
+.recently_viewed_lists
+  .list_title
+    font-weight: bold
+  .recently_viewed_list
+    display: block
+    margin: 5px 0
 
 .suggestions
   margin: 25px 0
@@ -18,10 +42,7 @@
   .suggestion-contents
     float: left
     margin-left: 10px
-  .suggestion-notes
-    color: #999
-    font-size: 12px
-    font-weight: normal
+
   .suggestion-contents
     font-weight: bold
   .vote-button
@@ -29,10 +50,3 @@
     padding: 5px
   .voted
     color: green
-
-.recently_viewed_lists
-  .list_title
-    font-weight: bold
-  .recently_viewed_list
-    display: block
-    margin: 5px 0

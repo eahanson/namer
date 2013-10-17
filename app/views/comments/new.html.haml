@@ -1,0 +1,12 @@
+= form_for [@list, @suggestion, @comment] do |f|
+  .form-group.required
+    = f.label :creator, 'What is your name?', class: 'control-label'
+    = f.text_field :creator, placeholder: 'Homer, Homer J. Simpson, ...', class: 'form-control'
+
+  .form-group.required
+    = f.label :contents, 'Your comment:', class: 'control-label'
+    = f.text_field :contents, class: 'form-control'
+
+  %button.btn.btn-primary#submit{type: 'submit'}
+    Add Comment
+    = fa_icon 'check-sign'

@@ -3,11 +3,18 @@
     = fa_icon 'star-empty'
   .suggestion-contents
     = suggestion.contents
-    .suggestion-notes
-      = fa_icon 'star'
-      %span.vote-count= suggestion.vote_count
-      •
-      Suggested by
-      %span.creator= suggestion.creator
-      #{time_ago_in_words suggestion.created_at} ago
+    %ul.actions
+      %li
+        = fa_icon 'star'
+        %span.vote-count= suggestion.vote_count
+      %li
+        Suggested by
+        %span.creator= suggestion.creator
+        #{time_ago_in_words suggestion.created_at} ago
+      %li
+        = link_to new_list_suggestion_comment_path(@list, suggestion) do
+          = fa_icon 'comment'
+          Add Comment
   .clearfix
+  .suggestion-comments
+    = render suggestion.comments.order('created_at asc')

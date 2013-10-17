@@ -5,7 +5,6 @@
 #  id         :integer          not null, primary key
 #  list_id    :integer          not null
 #  contents   :text             not null
-#  notes      :text
 #  creator    :string(255)      not null
 #  created_at :datetime
 #  updated_at :datetime
