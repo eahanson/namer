@@ -15,6 +15,10 @@
         = link_to new_list_suggestion_comment_path(@list, suggestion) do
           = fa_icon 'comment'
           Add Comment
+      %li
+        = link_to list_suggestion_domain_names_path(@list, suggestion) do
+          = fa_icon 'cloud'
+          Find Domain Names
   .clearfix
   .suggestion-comments
     = render suggestion.comments.order('created_at asc')

@@ -31,35 +31,35 @@ describe ListsController do
 
   describe "#show" do
     it 'shows a list given a slug' do
-      list = mom.list!
+      list = mom.list
       get :show, id: list.slug
       expect(assigns(:list)).to eq list
     end
 
     it 'does show accept a list id' do
-      list = mom.list!
+      list = mom.list
       get :show, id: list.id
       expect(assigns(:list)).to eq nil
     end
 
     describe 'recently viewed lists' do
       it 'stores the list in the session' do
-        list = mom.list!
+        list = mom.list
         get :show, id: list.to_param
         expect(session[:recently_viewed_lists]).to eq [list.to_param]
       end
 
       it 'does not store the list in the session if it already exists' do
-        list = mom.list!
+        list = mom.list
         session[:recently_viewed_lists] = [list.to_param]
         get :show, id: list.to_param
         expect(session[:recently_viewed_lists]).to eq [list.to_param]
       end
 
       it 'puts the most recent one at the front of the list' do
-        oldest = mom.list!
-        old = mom.list!
-        newer = mom.list!
+        oldest = mom.list
+        old = mom.list
+        newer = mom.list
 
         session[:recently_viewed_lists] = [newer, old, oldest].map(&:to_param)
 

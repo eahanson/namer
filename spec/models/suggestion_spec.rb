@@ -15,7 +15,7 @@ require 'spec_helper'
 describe Suggestion do
   describe 'validations' do
     before do
-      list = mom.list!
+      list = mom.list
       @valid = Suggestion.new(list_id: list.id, contents: 'contents', creator: 'creator')
       expect(@valid).to be_valid
     end
@@ -37,7 +37,7 @@ describe Suggestion do
   end
 
   it 'belongs to a list' do
-    list = mom.list!
+    list = mom.list
     suggestion = list.suggestions.create! contents: 'contents', creator: 'creator'
     expect(suggestion.list).to eq list
     expect(suggestion.contents).to eq 'contents'
@@ -45,7 +45,7 @@ describe Suggestion do
   end
 
   it 'has votes' do
-    suggestion = mom.suggestion!
+    suggestion = mom.suggestion
     vote = suggestion.votes.create!
     expect(suggestion.votes).to match_array [vote]
   end

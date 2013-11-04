@@ -1,10 +1,8 @@
 class VotesController < ApplicationController
+  before_filter :load_list_and_suggestion
+
   def create
-    votes = List.
-      find_by_slug!(params[:list_id]).
-      suggestions.
-      find_by_id!(params[:suggestion_id]).
-      votes
+    votes = @suggestion.votes
 
     votes.create!
 

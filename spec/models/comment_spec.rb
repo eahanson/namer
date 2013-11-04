@@ -14,7 +14,7 @@ require 'spec_helper'
 
 describe Comment do
   it 'belongs to a suggestion' do
-    suggestion = mom.suggestion!
+    suggestion = mom.suggestion
     comment = suggestion.comments.create! creator: 'fred', contents: 'no comment'
     expect(suggestion.reload.comments).to match_array [comment]
   end
