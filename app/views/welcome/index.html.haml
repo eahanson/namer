@@ -1,4 +1,4 @@
-.panel.jumbotron
+.jumbotron
   %h2 Need Help Naming Something?
   %p
     You can get help coming up with a name for something (a product, a baby, a song, etc...) from your friends.
@@ -7,10 +7,11 @@
       Get Started
       = fa_icon 'chevron-right'
 
-.panel
-  %h4 Helping Someone Else Come Up With A Name?
-  %p
-    They should have sent you a link—click it or paste it in your browser's address bar.
+.panel.panel-default
+  .panel-body
+    %h4 Helping Someone Else Come Up With A Name?
+    %p
+      They should have sent you a link—click it or paste it in your browser's address bar.
 
 - if @recently_viewed_lists.present?
   .recently_viewed_lists
