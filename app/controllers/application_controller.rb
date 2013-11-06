@@ -4,7 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def load_list_and_suggestion
-    @list = List.find_by_slug!(params[:list_id])
+    load_list
     @suggestion = @list.suggestions.find_by_id!(params[:suggestion_id])
+  end
+
+  def load_list
+    @list = List.find_by_slug!(params[:list_id])
   end
 end

@@ -1,4 +1,6 @@
 class SuggestionsController < ApplicationController
+  before_filter :load_list
+
   def new
     @suggestion = Suggestion.new creator: session[:creator]
   end
@@ -6,8 +8,7 @@ class SuggestionsController < ApplicationController
   def create
     session[:creator] = params[:suggestion].try(:[], :creator)
 
-    list = List.find_by_slug(params[:list_id])
-    list.suggestions.create! params[:suggestion].permit(:creator, :contents)
-    redirect_to list_path(list)
+    @list.suggestions.create! params[:suggestion].permit(:creator, :contents)
+    redirect_to list_path(@list)
   end
 end
