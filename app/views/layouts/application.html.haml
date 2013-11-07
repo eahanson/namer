@@ -5,6 +5,7 @@
 
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = stylesheet_link_tag    '//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css'
+    = stylesheet_link_tag    '//fonts.googleapis.com/css?family=Prosto+One'
 
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = javascript_include_tag '//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js'
@@ -16,6 +17,7 @@
     - unless @hide_navbar
       %nav.navbar.navbar-default{role: 'navigation'}
         .navbar-header
-          = link_to 'Namer', root_path, class: 'navbar-brand'
+          = link_to root_path, class: 'navbar-brand' do
+            = render 'shared/logo'
     .container{style: 'margin-top: 50px; padding-right: 50px; padding-left: 50px'}
       = yield
