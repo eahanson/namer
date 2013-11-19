@@ -23,14 +23,4 @@
     = fa_icon 'share-sign'
     Share this URL with your friends to get some help:
     %div
-      %input{type: 'text', value: list_url(@list), style: 'width: 100%; color: #999; border: 1px solid #ccc'}
-
-:coffeescript
-  $('.vote-button').on 'ajax:success', (event, data, status, xhr) ->
-    suggestion = $("#suggestion_\#{data.suggestion}")
-    suggestion.find(".vote-count").text(data.votes)
-    suggestion.find(".vote-button").addClass('voted')
-    suggestion.find(".vote-button i").removeClass('icon-star-empty').addClass('icon-star')
-
-  $('.vote-button').on 'ajax:before', ->
-    $(this).attr('disabled', true)
+      %input#share_url{type: 'text', value: list_url(@list), style: 'width: 100%; color: #999; border: 1px solid #ccc'}

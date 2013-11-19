@@ -1,7 +1,7 @@
 = form_for @list do |f|
   .form-group.required
     = f.label :creator, 'What is your name?', class: 'control-label'
-    = f.text_field :creator, placeholder: 'Homer, Homer J. Simpson, ...', class: 'form-control'
+    = f.text_field :creator, placeholder: 'Homer, Homer J. Simpson, ...', class: 'form-control', autocomplete: 'off', autocorrect: 'off', autocapitalize: 'off'
 
   .form-group.required
     = f.label :title, 'What do you need help naming?', class: 'control-label'

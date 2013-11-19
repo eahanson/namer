@@ -1,3 +1,15 @@
+input[type=text], textarea
+  font-size: 16px !important
+
+.has-error
+  label
+    background-color: #fffee4
+
+.container
+  margin-top: 20px
+  padding-right: 20px
+  padding-left: 20px
+
 .actions
   list-style-type: none
   margin: 0
@@ -50,15 +62,23 @@
   .voted
     color: green
 
-.domain
-  color: gray
-
-  &.available
-    color: green
+.domain_names
+  .domain
+    padding: 3px 0
+    i
+      display: inline-block
+      width: 15px
+      &.icon-ok
+        color: green
+      &.icon-remove
+        color: red
+  .btn
+    margin: 5px 0 10px 0
 
 .big-logo
   display: block
   font-size: 30px
+  margin-top: 10px
   margin-bottom: 30px
 
 .logo

@@ -1,4 +1,5 @@
-%h3 Possible Domain Names For “#{@suggestion.contents}”
-= render @domain_names
+.domain_names
+  %h4 Possible Domain Names For “#{@suggestion.contents}”
+  = render @domain_names
 
-= link_to 'Back', list_path(@list), class: 'btn btn-default'
+  = link_to 'Back', list_path(@list), class: 'btn btn-default'
