@@ -1,2 +1,3 @@
-$('#get-started').on 'click', ->
-  document.location = "#{new_list_path}"
+$ ->
+  $('#get-started').on 'click', ->
+    document.location = $(this).data('url')
