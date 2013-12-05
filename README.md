@@ -1,6 +1,6 @@
 # namer
 
-A simple web app to get help coming up with names for things.
+A simple web app to get help coming up with names for things. See it running at [www.helpname.it](http://www.helpname.it)
 
 ## Getting started developing
 
