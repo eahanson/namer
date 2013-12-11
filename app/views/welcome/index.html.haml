@@ -1,3 +1,10 @@
+.stats
+  %span.list-count
+    = fa_icon 'question-circle'
+    = List.count
+  %span.suggestion-count
+    = fa_icon 'comment'
+    = Suggestion.count
 .big-logo= render 'shared/logo'
 
 .jumbotron
