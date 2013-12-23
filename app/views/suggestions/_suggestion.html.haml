@@ -1,6 +1,6 @@
 .suggestion{id: "suggestion_#{suggestion.to_param}"}
   = link_to list_suggestion_votes_path(@list, suggestion), remote: true, method: :post, class: 'btn btn-link btn-large vote-button' do
-    = fa_icon 'star-empty'
+    = fa_icon 'star-o'
   .suggestion-contents
     = suggestion.contents
     %ul.actions
