@@ -22,6 +22,14 @@
     %p
       They should have sent you a link—click it or paste it in your browser's address bar.
 
+%p
+  %b More Naming Tools:
+  = succeed ',' do
+    = link_to 'Wordoid', 'http://wordoid.com'
+  = succeed ',' do
+    = link_to 'Domai.nr', 'https://domai.nr'
+  = link_to 'Namegrep', 'http://namegrep.com'
+
 - if @recently_viewed_lists.present?
   .recently_viewed_lists
     %h4 You recently viewed:
